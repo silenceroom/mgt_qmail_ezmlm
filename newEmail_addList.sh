@@ -9,13 +9,13 @@
 createEmailAccount=/home/vpopmail/bin/vadduser
 add2EmailList=/usr/local/bin/ezmlm/ezmlm-sub
 
-domain=/home/vpopmail/domains/ykpaoschool.cn/
+domain=/home/vpopmail/domains/YourDomainName/
 
 while read newUsers userGroup
 do
-	su vpopmail -c "$createEmailAccount -q NOQUOTA $newUsers@ykpaoschool.cn $newUsers"
+	su vpopmail -c "$createEmailAccount -q NOQUOTA $newUsers@domain.anme $newUsers"
 	while read mailList
 	do
-		su vpopmail -c "$add2EmailList $domain$mailList $newUsers@ykpaoschool.cn"
+		su vpopmail -c "$add2EmailList $domain$mailList $newUsers@domain.name"
 	done < ./inc/$userGroup
 done < ./inc/newUsers_and_Group
